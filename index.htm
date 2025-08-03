@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Wit Daily</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>The Wit Daily</h1>
+    <p>By Adroni Emma</p>
+  </header>
+
+  <section class="story">
+    <h2>Leaning on a Twig</h2>
+    <p>“What should I do?” I thought to myself. A stranger lurked in the dark of my single-bedroom house...</p>
+
+    <!-- Like Button -->
+    <button onclick="likePost()">👍 Like</button> <span id="likeCount">0</span> Likes
+
+    <!-- Comments -->
+    <div id="comments-section">
+      <h3>Comments</h3>
+      <script src="https://utteranc.es/client.js"
+        repo="YOUR_USERNAME/The-wit-daily"
+        issue-term="title"
+        label="comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
+  </section>
+
+  <script>
+    function likePost() {
+      let count = localStorage.getItem("likes") || 0;
+      count++;
+      localStorage.setItem("likes", count);
+      document.getElementById("likeCount").innerText = count;
+    }
+
+    window.onload = () => {
+      document.getElementById("likeCount").innerText = localStorage.getItem("likes") || 0;
+    }
+  </script>
+</body>
+</html>
